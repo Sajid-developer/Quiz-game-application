@@ -185,6 +185,21 @@ function HandleUserScore(category){
     
 }
 
-
-
-
+// quiz timer limit
+function StartTimer(time){
+  counter=setInterval(timer, 1000);
+  function timer(){
+    if(time > 0){
+      console.log(time);
+      time--;
+    } 
+     else{
+       clearInterval(counter);
+       console.warn("Time over.");
+       let answer=categoryQuestions[ques_count].answer;
+       HighlightCorrectAnswer(answer);
+       answerList.classList.add('disable');
+       nextBtn.style.display='block';
+     }
+  }
+}
