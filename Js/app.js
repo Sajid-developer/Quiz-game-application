@@ -120,8 +120,11 @@ function RenderQuestion(index){
   nextBtn.style.display='none';
 
 }
-
-
+ //indicate quiz question number
+  function QuestionCounter(quesNumb){
+      let counterTag=`<span>${quesNumb}</span> of <span>${numbOfQuestions}</span> Questions`;
+      question_counter.innerHTML=counterTag;
+}
 
   let tickIcon='<span><i class="fa-regular fa-circle-check"></i><span>';
   let crossIcon='<span><i class="fa-regular fa-circle-xmark"></i><span>';
