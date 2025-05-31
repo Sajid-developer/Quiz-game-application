@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Leaderboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .leaderboard {
+      position: relative;
+      width: 100%;
+      max-width: 750px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      overflow-x: auto;
+    }
+
+    .leaderboard h2 {
+      width: 100%;
+      text-align: center;
+      padding: 16px 0;
+      background-color: #1e3a8a;
+      color: #ffffff;
+      margin: 0;
+      font-size: 22px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td{
+      padding: 14px 30px;
+      text-align: left;
+    }
+    tr td{
+        font-size: 14px;
+    }
+    tr th{
+        font-size: 14px;
+    }
+    thead {
+      background-color: #c9d6ff;
+      color: #1e3a8a;
+    }
+
+    tbody tr {
+      border-top: 1px solid #f0f0f0;
+      transition: background-color 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background-color: #ebf5ff;
+    }
+
+    td img{
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin: 0;
+        padding: 0;
+        border-radius: 50%;
+        /* border: 2px solid #1E3A8A; */
+    }
+
+    .rank {
+      font-weight: bold;
+      font-size: 18px;
+      color: #1e40af;
+    }
+
+    .score {
+      font-weight: 500;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <div class="leaderboard">
+    <h2>🏆 Quiz Leaderboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Profile</th>
+          <th>Username</th>
+          <th>Category</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank">#1</td>
+          <td> <img src="Images/elegant.jpg" alt="profile-image"></td>
+          <td>Alice</td>
+          <td>Science</td>
+          <td class="score">98</td>
+        </tr>
+        <tr>
+          <td class="rank">#2</td>
+          <td> <img src="Images/image.jpg" alt="profile-image"></td>
+          <td>Bob</td>
+          <td>Programming</td>
+          <td class="score">91</td>
+        </tr>
+        <tr>
+          <td class="rank">#3</td>
+          <td> <img src="Images/cute_girl.jpg" alt="profile-image"></td>
+          <td>Charlie</td>
+          <td>Geography</td>
+          <td class="score">87</td>
+        </tr>
+        <tr>
+          <td class="rank">#4</td>
+          <td> <img src="Images/profile.jpeg" alt="profile-image"></td>
+          <td>Diana</td>
+          <td>Technology</td>
+          <td class="score">83</td>
+        </tr>
+        <tr>
+          <td class="rank">#5</td>
+          <td> <img src="Images/sajid-pro.jpg" alt="profile-image"></td>
+          <td>Edward</td>
+          <td>Entertainment</td>
+          <td class="score">79</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

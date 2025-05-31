@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Leaderboard</title>
+  <style>
+    :root {
+      --bg-light: #f8fafc;
+      --card-light: #ffffff;
+      --text-light: #0f172a;
+      --table-head-light: #e0e7ff;
+      --hover-light: #f1f5f9;
+
+      --bg-dark: #0f172a;
+      --card-dark: #1e293b;
+      --text-dark: #f8fafc;
+      --table-head-dark: #4367de;
+      --hover-dark: #0f1928;
+
+      --accent: #1e40af;
+      --header-bg: #0a1a81;
+      --header-text: #ffffff;
+    }
+
+    body[data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body[data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-btn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .leaderboard {
+      position: relative;
+      width: 100%;
+      max-width: 750px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      background-color: var(--card-light);
+      transition: background-color 0.3s ease;
+      overflow-x: auto;
+    }
+
+    body[data-theme="dark"] .leaderboard {
+      background-color: var(--card-dark);
+    }
+
+    .leaderboard h2 {
+      text-align: center;
+      padding: 16px 0;
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      margin: 0;
+      font-size: 22px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 16px 32px;
+      text-align: left;
+    }
+    tr th{
+        font-size: 14px;
+    }
+    tr td{
+        font-size: 14px;
+    }
+    thead {
+      width: 100%;
+      background-color: var(--table-head-light);
+      color: var(--accent);
+    }
+
+    body[data-theme="dark"] thead {
+      background-color: var(--table-head-dark);
+      color: rgb(170, 210, 255);
+    }
+
+    tbody tr {
+      border-top: 1px solid rgba(100, 116, 139, 0.1);
+      transition: background-color 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background-color: var(--hover-light);
+    }
+
+    body[data-theme="dark"] tbody tr:hover {
+      background-color: var(--hover-dark);
+    }
+
+    .rank {
+      font-weight: bold;
+      color: var(--accent);
+    }
+    body[data-theme="dark"] .rank{
+        color: rgb(74, 158, 255);
+    } 
+    .score {
+      font-weight: 500;
+    }
+
+    td img{
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin: 0;
+        padding: 0;
+        border-radius: 50%;
+        /* border: 2px solid #1E3A8A; */
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme 🌗</button>
+
+  <div class="leaderboard">
+    <h2>🏆 Quiz Leaderboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Profile</th>
+          <th>Username</th>
+          <th>Category</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank">#1</td>
+          <td> <img src="Images/elegant.jpg" alt="profile-image"></td>
+          <td>Alice</td>
+          <td>Science</td>
+          <td class="score">98</td>
+        </tr>
+        <tr>
+          <td class="rank">#2</td>
+          <td> <img src="Images/image.jpg" alt="profile-image"></td>
+          <td>Bob</td>
+          <td>Programming</td>
+          <td class="score">91</td>
+        </tr>
+        <tr>
+          <td class="rank">#3</td>
+          <td> <img src="Images/cute_girl.jpg" alt="profile-image"></td>
+          <td>Charlie</td>
+          <td>Geography</td>
+          <td class="score">87</td>
+        </tr>
+        <tr>
+          <td class="rank">#4</td>
+          <td> <img src="Images/profile.jpeg" alt="profile-image"></td>
+          <td>Diana</td>
+          <td>Technology</td>
+          <td class="score">83</td>
+        </tr>
+        <tr>
+          <td class="rank">#5</td>
+          <td> <img src="Images/sajid-pro.jpg" alt="profile-image"></td>
+          <td>Edward</td>
+          <td>Entertainment</td>
+          <td class="score">79</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', newTheme);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="keyword" content="Music player, Music player application"/>
+	<meta name="description" content="A music player which makes you feel awesome and lights up your mood!"/>
+	<!-- <link rel="manifest" href="manifest.json"> -->
+	<link rel="icon" href="icon-512.png">
+	<meta name="theme-color" content="#02061C">
+	<link rel="apple-touch-icon" sizes="192x192" href="icon-512.png">
+	<link rel="stylesheet" type="text/css" href="Css/style.css">
+   <script src="https://kit.fontawesome.com/ccedc0fc77.js" crossorigin="anonymous"></script>
+   <title>Music player application</title>
+   <script>
+      //if browser support service worker
+      // if ('serviceWorker' in navigator) {
+      //    navigator.serviceWorker.register('sw.js');
+      // };
+   </script>
+</head>
+
+<body>
+
+    <button class="startBtn">Start Quiz</button>
+
+    <div class="questionCategory">
+      <button class="category-btn active" value="Entertainment">Entertainment</button>
+      <button class="category-btn" value="Programming">Programming</button>
+      <button class="category-btn" value="Geography">Geography</button>
+      <button class="category-btn" value="Science & Technology">Science & Technology</button>
+    </div>
+
+   <div class="numbOfQuestion">
+      <button class="number">5</button>
+      <button class="number active">10</button>
+      <button class="number">15</button>
+      <button class="number">20</button>
+      <button class="number">30</button>
+   </div>
+
+    
+    <div class="score"></div>
+
+
+   <div class="quiz_box">
+
+      <h1 class="questionBox"></h1>
+
+      <ul class="answer-list">
+         
+      </ul>
+
+      <div class="question_counter"></div>
+
+      <button class="nextBtn">Next</button>
+   </div>
+
+	<script type="text/javascript" src="Js/quizQuestions.js" defer></script>
+	<script type="text/javascript" src="Js/app.js" defer></script>
+
+
+</body>
+
+</html>
