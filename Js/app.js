@@ -155,6 +155,17 @@ function AnswerSelected(answer){
     nextBtn.style.display='block';
 }
 
+// highlight correct answer automatically when user selects wrong answer
+function HighlightCorrectAnswer(correctAnswer){
+    const allOptions=answerList.querySelectorAll('li');
+    allOptions.forEach(option =>{
+       if(option.textContent === correctAnswer){
+           option.classList.add('correct');
+           option.insertAdjacentHTML("beforeend", tickIcon);   
+       }
+    });
+  }
+
 
 
 
