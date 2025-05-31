@@ -166,6 +166,25 @@ function HighlightCorrectAnswer(correctAnswer){
     });
   }
 
+  // handle user score on the basis of category of question
+function HandleUserScore(category){
+   if(category == "Entertainment"){
+      userScore+=50;
+   }
+   else if(category == "Programming"){
+      userScore+=100;
+   }
+   else if(category == "Geography"){
+      userScore+=150;
+   }
+   else{
+      userScore+=200;
+   }
+
+    scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
+    
+}
+
 
 
 
