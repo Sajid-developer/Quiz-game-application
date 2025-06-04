@@ -22,6 +22,7 @@ let correctAnswerCount=0;
 let WidthValue=0;
 let userScore=0;
 let counter,counterLine;
+let counterCount=0;   
 
 categoryBtns.forEach(btn =>{
   btn.addEventListener("click", ()=>{
@@ -51,6 +52,7 @@ function resetQuiz(){
     correctAnswerCount=0;
     WidthValue=0;
     userScore=0;
+    counterCount=0;
     clearInterval(counter);
 }
 
@@ -79,6 +81,7 @@ nextBtn.addEventListener("click", ()=>{
      RenderQuestion(ques_count);
      QuestionCounter(ques_numb);
      clearInterval(counter);
+     counterCount=0;
      StartTimer(timerValue);
   }
   else{
@@ -131,6 +134,7 @@ function RenderQuestion(index){
 
 function AnswerSelected(answer){
     clearInterval(counter);
+    console.log(counterCount);
     let userAnswer=answer.textContent;
     let correctAnswer=categoryQuestions[ques_count].answer;
 
@@ -139,7 +143,11 @@ function AnswerSelected(answer){
     console.log("Answer is correct.");
     answer.classList.add('correct');
     correctAnswerCount++;
-    HandleUserScore(quizCategory);
+    let bonusScore=0;
+    if(counterCount <= 5){
+      bonusScore=50;
+    }
+    HandleUserScore(quizCategory, bonusScore);
     answer.insertAdjacentHTML("beforeend", tickIcon);
    }
   else{
@@ -167,18 +175,22 @@ function HighlightCorrectAnswer(correctAnswer){
   }
 
   // handle user score on the basis of category of question
-function HandleUserScore(category){
+function HandleUserScore(category, bonus){
    if(category == "Entertainment"){
-      userScore+=50;
+      userScore+=100;
+      userScore+=bonus;
    }
    else if(category == "Programming"){
-      userScore+=100;
+      userScore+=150;
+      userScore+=bonus;
    }
    else if(category == "Geography"){
-      userScore+=150;
+      userScore+=200;
+      userScore+=bonus;
    }
    else{
-      userScore+=200;
+      userScore+=250;
+      userScore+=bonus;
    }
 
     scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
@@ -192,6 +204,7 @@ function StartTimer(time){
     if(time > 0){
       console.log(time);
       time--;
+      counterCount++;
     } 
      else{
        clearInterval(counter);
