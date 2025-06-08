@@ -3,18 +3,32 @@
   padding: 0;
   box-sizing: border-box;
 }
-.quiz_box{
+body{
+  overflow-x: hidden;
+}
+.main-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: azure;
+}
+.quiz_box,
+.quiz_info,
+.quiz_result{
   width: 400px;
-  margin:100px auto;
-  padding: 30px 40px;
   background-color: rgb(25, 32, 74);
   border-radius: 12px;
-  transform: scale(0.9);
+  transform: scale(1.1);
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
-.quiz_box.active{
+.quiz_info.activeInfo,
+.quiz_box.activeQuiz,
+.quiz_info.activeResult{
   transform: scale(1);
   opacity: 1;
   visibility: visible;

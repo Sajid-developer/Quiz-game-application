@@ -57,7 +57,7 @@ function resetQuiz(){
 }
 
 startBtn.addEventListener("click", ()=>{
-   quiz_box.classList.add('active');
+   quiz_box.classList.add('activeQuiz');
    quizCategory=document.querySelector(".category-btn.active").value;
    numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
    resetQuiz();
