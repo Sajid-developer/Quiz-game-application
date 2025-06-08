@@ -1,16 +1,20 @@
 
-const quiz_box=document.querySelector('.quiz_box');
+const quizConfig=document.querySelector('.quiz_config');
+const quizInfo=document.querySelector('.quiz_info');
+const quizBox=document.querySelector('.quiz_box');
+const quizResult=document.querySelector('.quiz_result');
 const questionText=document.querySelector('.questionBox');
 const answerList=document.querySelector('.answer-list');
 const scoreBox=document.querySelector('.score');
 const question_counter=document.querySelector('.question_counter');
-
 const startBtn=document.querySelector('.startBtn');
 const nextBtn=document.querySelector('.nextBtn');
+const exitBtns=document.querySelectorAll('.buttons .btn.exit');
+const continueBtn=document.querySelector('.buttons .btn.continue');
+const restartBtn=document.querySelector('.buttons .btn.restart');
 const categoryBtns=document.querySelectorAll('.questionCategory .category-btn');
 const numbQuestion=document.querySelectorAll('.numbOfQuestion .number');
-
-
+  
 let quizCategory=document.querySelector(".category-btn.active").value;
 let numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
 
@@ -57,8 +61,22 @@ function resetQuiz(){
 }
 
 startBtn.addEventListener("click", ()=>{
-   quiz_box.classList.add('activeQuiz');
-   quizCategory=document.querySelector(".category-btn.active").value;
+   quizConfig.classList.remove('activeConfig');
+   quizInfo.classList.add('activeInfo');
+});
+
+exitBtns.forEach(exit =>{
+   exit.addEventListener("click", ()=>{
+   quizInfo.classList.remove('activeInfo');
+   quizResult.classList.remove('activeResult');
+  });
+});
+
+continueBtn.addEventListener("click", ()=>{
+  quizInfo.classList.remove("activeInfo");
+  quizBox.classList.add("activeQuiz");
+
+  quizCategory=document.querySelector(".category-btn.active").value;
    numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
    resetQuiz();
    correctAnswerCount=0;
@@ -67,9 +85,14 @@ startBtn.addEventListener("click", ()=>{
    StartTimer(TIMER_LIMIT);
    scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
    scoreBox.style.display='block';
-   document.querySelector('.questionCategory').style.display='none';
-   document.querySelector('.numbOfQuestion').style.display='none';
 });
+
+restartBtn.addEventListener("click", ()=>{
+  quizResult.classList.remove("activeResult");
+  quizConfig.classList.add("activeConfig");
+  resetQuiz();
+});
+
 
 const categoryQuestions=QuizData.find(quiz => 
   quiz.category.toLowerCase() === quizCategory.toLowerCase()).questions;
@@ -88,10 +111,10 @@ nextBtn.addEventListener("click", ()=>{
     console.log("Quiz completed");
     console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} question correctly.`);
     console.log(`Final Score is: ${userScore}`);
-    quiz_box.classList.remove('active');
+    quizBox.classList.remove('activeQuiz');
     scoreBox.style.display='none';
-    document.querySelector('.questionCategory').style.display='flex';
-    document.querySelector('.numbOfQuestion').style.display='flex';
+    quizBox.classList.remove('activeQuiz');
+    quizResult.classList.add('activeResult');
   }
 
 });
