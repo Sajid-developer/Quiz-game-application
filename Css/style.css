@@ -12,19 +12,23 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  /* flex-wrap: wrap; */
+  gap: 40px;
   background-color: azure;
 }
+.quiz_config,
 .quiz_box,
 .quiz_info,
 .quiz_result{
   width: 400px;
   background-color: rgb(25, 32, 74);
   border-radius: 12px;
-  transform: scale(1.1);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.4s ease-in-out;
+  /* transform: scale(1.08); */
+  /* opacity: 0; */
+  /* visibility: hidden; */
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: 0.3s ease-in-out;
 }
 .quiz_info.activeInfo,
 .quiz_box.activeQuiz,
@@ -33,7 +37,15 @@ body{
   opacity: 1;
   visibility: visible;
 }
-.quiz_box h1{
+.quiz_config .header,
+.quiz_info .header, 
+.quiz_box .header{
+  width: 100%;
+  padding: 16px 30px;
+  background: linear-gradient(30deg, rgb(150, 2, 150), rgb(44, 11, 255));
+  color: white;
+}
+.quiz_box h2{
   font-size: 22px;
   margin-bottom: 15px;
   color: white;
@@ -93,14 +105,12 @@ body{
   border: 1.5px solid rgb(228, 22, 22);
 }
 .startBtn{
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   outline: none;
   border: none;
   padding: 8px 20px;
+  margin-bottom: 20px;
   border-radius: 4px;
   background-color: blueviolet;
   cursor: pointer;
@@ -150,9 +160,9 @@ body{
 .numbOfQuestion{
   display: flex;
   flex-wrap: wrap;
-  width: 420px;
-  background-color: whitesmoke;
-  margin: 70px 0 0 30px;
+  width: 100%;
+  /* background-color: whitesmoke; */
+  margin: 20px 0;
   padding: 20px 30px;
   border-radius: 12px;
   font-family: sans-serif;

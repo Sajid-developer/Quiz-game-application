@@ -22,32 +22,38 @@
 
 <body>
 
-    <button class="startBtn">Start Quiz</button>
-
-    <div class="questionCategory">
-      <button class="category-btn" value="Entertainment">Entertainment</button>
-      <button class="category-btn active" value="Programming">Programming</button>
-      <button class="category-btn" value="Geography">Geography</button>
-      <button class="category-btn" value="Science & Technology">Science & Technology</button>
-    </div>
-
-   <div class="numbOfQuestion">
-      <button class="number">5</button>
-      <button class="number active">10</button>
-      <button class="number">15</button>
-      <button class="number">20</button>
-      <button class="number">30</button>
-   </div>
-
     
-    <div class="score"></div>
+   <div class="score"></div>
 
    <section class="main-container">
+   
+      <!--------Quiz configuration------->
+      <div class="quiz_config">
+      <div class="header">
+         <h2>⚙️ Quiz Configuration</h2>
+      </div>
+      <div class="questionCategory">
+         <button class="category-btn" value="Entertainment">Entertainment</button>
+         <button class="category-btn active" value="Programming">Programming</button>
+         <button class="category-btn" value="Geography">Geography</button>
+         <button class="category-btn" value="Science & Technology">Science & Technology</button>
+      </div>
+
+      <div class="numbOfQuestion">
+         <button class="number">5</button>
+         <button class="number active">10</button>
+         <button class="number">15</button>
+         <button class="number">20</button>
+         <button class="number">30</button>
+      </div>
+
+      <button class="startBtn">Start Quiz</button>
+    </div>
    
    <!-------Quiz info box------->
    <div class="quiz_info">
       <div class="header">
-         <h2>ℹ️ Quiz Info</h2>
+         <h1>ℹ️ Quiz Info</h1>
       </div>
       <div class="info_content">
          <p>1. Lorem ipsum dolor sit, amet  adipisicing.</p>
@@ -64,7 +70,10 @@
 
    <!-------Quiz game box------->
    <div class="quiz_box">
-      <h1 class="questionBox"></h1>
+      <div class="header">
+         <h1>💡 Quiz Appplication</h1>
+      </div>
+      <h2 class="questionBox"></h2>
       <ul class="answer-list"> 
       </ul>
       <div class="question_counter"></div>
