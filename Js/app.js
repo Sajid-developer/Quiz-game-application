@@ -14,6 +14,7 @@ const continueBtn=document.querySelector('.buttons .btn.continue');
 const restartBtn=document.querySelector('.buttons .btn.restart');
 const categoryBtns=document.querySelectorAll('.questionCategory .category-btn');
 const numbQuestion=document.querySelectorAll('.numbOfQuestion .number');
+const playGame=document.querySelector(".play-game");
   
 let quizCategory=document.querySelector(".category-btn.active").value;
 let numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
@@ -27,6 +28,10 @@ let WidthValue=0;
 let userScore=0;
 let counter,counterLine;
 let counterCount=0;   
+
+playGame.addEventListener("click", ()=>{
+   quizConfig.classList.add('activeConfig');
+});
 
 categoryBtns.forEach(btn =>{
   btn.addEventListener("click", ()=>{
