@@ -31,6 +31,7 @@ let counterCount=0;
 
 playGame.addEventListener("click", ()=>{
    quizConfig.classList.add('activeConfig');
+   playGame.classList.add('hide');
 });
 
 categoryBtns.forEach(btn =>{
@@ -74,6 +75,7 @@ exitBtns.forEach(exit =>{
    exit.addEventListener("click", ()=>{
    quizInfo.classList.remove('activeInfo');
    quizResult.classList.remove('activeResult');
+   playGame.classList.remove('hide');
   });
 });
 
@@ -106,22 +108,20 @@ nextBtn.addEventListener("click", ()=>{
   if(ques_count < numbOfQuestions - 1){
      ques_count++;
      ques_numb++;
+     counterCount=0;
      RenderQuestion(ques_count);
      QuestionCounter(ques_numb);
      clearInterval(counter);
-     counterCount=0;
      StartTimer(timerValue);
   }
   else{
     console.log("Quiz completed");
     console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} question correctly.`);
     console.log(`Final Score is: ${userScore}`);
-    quizBox.classList.remove('activeQuiz');
     scoreBox.style.display='none';
     quizBox.classList.remove('activeQuiz');
     quizResult.classList.add('activeResult');
   }
-
 });
 
 

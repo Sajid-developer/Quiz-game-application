@@ -22,10 +22,11 @@
 
 <body>
 
-   <button class="play-game">Let's play Game</button>
-   <div class="score"></div>
 
    <section class="main-container">
+
+      <button class="play-game">Let's play Game</button>
+      <div class="score"></div>
    
       <!--------Quiz configuration------->
       <div class="quiz_config">
@@ -33,18 +34,24 @@
          <h1>⚙️ Quiz Configuration</h1>
       </div>
       <div class="questionCategory">
-         <button class="category-btn" value="Entertainment">Entertainment</button>
-         <button class="category-btn active" value="Programming">Programming</button>
-         <button class="category-btn" value="Geography">Geography</button>
-         <button class="category-btn" value="Science & Technology">Science & Technology</button>
+         <label>Select Category</label>
+         <div class="buttons">
+            <button class="category-btn" value="Entertainment">Entertainment</button>
+            <button class="category-btn active" value="Programming">Programming</button>
+            <button class="category-btn" value="Geography">Geography</button>
+            <button class="category-btn" value="Science & Technology">Science & Technology</button>
+         </div>
       </div>
 
       <div class="numbOfQuestion">
-         <button class="number">5</button>
-         <button class="number active">10</button>
-         <button class="number">15</button>
-         <button class="number">20</button>
-         <button class="number">30</button>
+         <label>Select No. Of Quetions</label>
+         <div class="buttons">
+            <button class="number">5</button>
+            <button class="number active">10</button>
+            <button class="number">15</button>
+            <button class="number">20</button>
+            <button class="number">30</button>
+         </div>
       </div>
 
       <button class="startBtn">Start Quiz</button>
