@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="keyword" content="Music player, Music player application"/>
-	<meta name="description" content="A music player which makes you feel awesome and lights up your mood!"/>
-	<!-- <link rel="manifest" href="manifest.json"> -->
-	<link rel="icon" href="icon-512.png">
-	<meta name="theme-color" content="#02061C">
-	<link rel="apple-touch-icon" sizes="192x192" href="icon-512.png">
-	<link rel="stylesheet" type="text/css" href="Css/style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="keyword" content="Music player, Music player application" />
+   <meta name="description" content="A music player which makes you feel awesome and lights up your mood!" />
+   <!-- <link rel="manifest" href="manifest.json"> -->
+   <link rel="icon" href="icon-512.png">
+   <meta name="theme-color" content="#02061C">
+   <link rel="apple-touch-icon" sizes="192x192" href="icon-512.png">
+   <link rel="stylesheet" type="text/css" href="Css/style.css">
    <script src="https://kit.fontawesome.com/ccedc0fc77.js" crossorigin="anonymous"></script>
    <title>Music player application</title>
    <script>
@@ -27,88 +28,94 @@
 
       <button class="play-game">Let's play Game</button>
       <div class="score"></div>
-   
+
       <!--------Quiz configuration------->
       <div class="quiz_config">
-      <div class="header">
-         <h1>⚙️ Quiz Configuration</h1>
+         <div class="header">
+            <h1>⚙️ Quiz Configuration</h1>
+         </div>
+         <div class="questionCategory">
+            <label>Select Category</label>
+            <div class="buttons">
+               <button class="category-btn" value="Entertainment">Entertainment</button>
+               <button class="category-btn" value="Programming">Programming</button>
+               <button class="category-btn" value="Geography">Geography</button>
+               <button class="category-btn active" value="Science & Technology">Science & Tech</button>
+            </div>
+         </div>
+
+         <div class="numbOfQuestion">
+            <label>Select No. Of Quetions</label>
+            <div class="buttons">
+               <button class="number">5</button>
+               <button class="number active">10</button>
+               <button class="number">15</button>
+               <button class="number">20</button>
+               <button class="number">30</button>
+            </div>
+         </div>
+
+         <button class="startBtn">Start Quiz</button>
       </div>
-      <div class="questionCategory">
-         <label>Select Category</label>
+
+      <!-------Quiz info box------->
+      <div class="quiz_info">
+         <div class="header">
+            <h1>ℹ️ Quiz Info</h1>
+         </div>
+         <div class="info_content">
+            <p>1. Lorem ipsum dolor sit, amet adipisicing.</p>
+            <p>2. Lorem ipsum dolor sit, amet conseetur adipi.</p>
+            <p>3. Lorem ipsum dolor sit, amet consectetur.</p>
+            <p>4. Lorem ipsum dolor sit, amet consecte.</p>
+         </div>
          <div class="buttons">
-            <button class="category-btn" value="Entertainment">Entertainment</button>
-            <button class="category-btn active" value="Programming">Programming</button>
-            <button class="category-btn" value="Geography">Geography</button>
-            <button class="category-btn" value="Science & Technology">Science & Technology</button>
+            <button class="btn exit">Exit Quiz</button>
+            <button class="btn continue">Continue</button>
          </div>
       </div>
 
-      <div class="numbOfQuestion">
-         <label>Select No. Of Quetions</label>
-         <div class="buttons">
-            <button class="number">5</button>
-            <button class="number active">10</button>
-            <button class="number">15</button>
-            <button class="number">20</button>
-            <button class="number">30</button>
+
+      <!-------Quiz game box------->
+      <div class="quiz_box">
+         <div class="header">
+            <h1>Quiz Appplication</h1>
+            <div class="timer">⏳ 15s</div>
+         </div>
+
+         <div class="question-content">
+            <h2 class="questionBox"></h2>
+            <ul class="answer-list"></ul>
+         </div>
+
+         <div class="bottom-content">
+            <div class="question_counter"></div>
+            <button class="nextBtn">Next</button>  
          </div>
       </div>
 
-      <button class="startBtn">Start Quiz</button>
-    </div>
-   
-   <!-------Quiz info box------->
-   <div class="quiz_info">
-      <div class="header">
-         <h1>ℹ️ Quiz Info</h1>
-      </div>
-      <div class="info_content">
-         <p>1. Lorem ipsum dolor sit, amet  adipisicing.</p>
-         <p>2. Lorem ipsum dolor sit, amet conseetur adipi.</p>
-         <p>3. Lorem ipsum dolor sit, amet consectetur.</p>
-         <p>4. Lorem ipsum dolor sit, amet consecte.</p>
-      </div>
-      <div class="buttons">
-         <button class="btn exit">Exit Quiz</button>
-         <button class="btn continue">Continue</button>
-      </div>
-   </div>
-   
 
-   <!-------Quiz game box------->
-   <div class="quiz_box">
-      <div class="header">
-         <h1>💡 Quiz Appplication</h1>
+      <!-------Quiz result box------->
+      <div class="quiz_result">
+         <div class="header">
+            <img src="Images/congrats2.gif" alt="result-image" width="240px">
+         </div>
+         <div class="result_content">
+            <h2>Congratulations 😊</h2>
+            <p>You got 8 out 10 score, play again 👍🏼</p>
+         </div>
+         <div class="buttons">
+            <button class="btn exit">Exit Quiz</button>
+            <button class="btn restart">Play Again</button>
+         </div>
       </div>
-      <h2 class="questionBox"></h2>
-      <ul class="answer-list"> 
-      </ul>
-      <div class="question_counter"></div>
-      <button class="nextBtn">Next</button>
-   </div>
-
-
-   <!-------Quiz result box------->
-   <div class="quiz_result">
-      <div class="header">
-         <img src="Images/congrats2.gif" alt="result-image" width="240px">
-      </div>
-      <div class="result_content">
-         <h2>Congratulations 😊</h2>
-         <p>You got 8 out 10 score, play again 👍🏼</p>
-      </div>
-      <div class="buttons"> 
-         <button class="btn restart">Restart Quiz</button>
-         <button class="btn exit">Exit Quiz</button>
-      </div>
-   </div>
 
    </section>
 
 
    <!-------link javascript files---------->
-	<script type="text/javascript" src="Js/quizQuestions.js" defer></script>
-	<script type="text/javascript" src="Js/app.js" defer></script>
+   <script type="text/javascript" src="Js/quizQuestions.js" defer></script>
+   <script type="text/javascript" src="Js/app.js" defer></script>
 
 </body>
 

@@ -6,10 +6,19 @@
 body{
   overflow-x: hidden;
 }
+button{
+  cursor: pointer;
+}
+ul li{
+  cursor: pointer;
+}
 .main-container{
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: azure;
+  background-color: rgb(7, 1, 18);
   z-index: 10;
 }
 .quiz_config,
@@ -19,7 +28,8 @@ body{
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 400px;
+  width: 100%;
+  width: 420px;
   background-color: rgb(25, 32, 74);
   border-radius: 12px;
   transform: translate(-50%, -50%) scale(1.08);
@@ -30,6 +40,19 @@ body{
   transition: 0.3s ease-in-out;
   z-index: 10;
   transform-origin: center;
+}
+.quiz_box{
+  width: 550px;
+}
+.quiz_result{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 20px 0;
+}
+.result_content{
+  text-align: center;
 }
 .quiz_config.activeConfig,
 .quiz_info.activeInfo,
@@ -43,6 +66,8 @@ body{
 .quiz_config .header,
 .quiz_info .header, 
 .quiz_box .header{
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 16px 30px;
   background: linear-gradient(30deg, rgb(150, 2, 150), rgb(44, 11, 255));
@@ -53,6 +78,21 @@ body{
 .quiz_box .header h1{
     font-size: 24px;
     color: white;
+}
+.quiz_box .header .timer{
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.quiz_box .question-content{
+  padding: 20px 40px;
+}
+.quiz_box .bottom-content{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-top: 1px solid rgb(50, 76, 162);
 }
 .quiz_box h2{
   font-size: 22px;
@@ -104,12 +144,12 @@ body{
    color: rgb(222, 0, 0);
 }
 .answer-list li.correct{
-  background-color: rgba(18, 255, 89,0.2);
+  background-color: rgba(18, 255, 89,0.13);
   color: rgb(3, 174, 0);
   border: 1.5px solid rgb(25, 231, 25);
 }
 .answer-list li.incorrect{
-  background-color: rgb(255, 18, 18,0.2);
+  background-color: rgb(255, 18, 18,0.13);
   color: rgb(222, 0, 0);
   border: 1.5px solid rgb(228, 22, 22);
 }
@@ -123,6 +163,7 @@ body{
   outline: none;
   border: none;
   padding: 10px 30px;
+  margin: 0;
   border-radius: 40px;
   background-color: blueviolet;
   cursor: pointer;
@@ -133,6 +174,38 @@ body{
 }
 .play-game.hide{
   display: none;
+}
+.quiz_info .buttons,
+.quiz_result .buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  margin: 30px 0 40px 0;
+  /* border: 2px solid red; */
+}
+.quiz_info .buttons .btn,
+.quiz_result .buttons .btn{
+  width: calc(100%/2 - 15px);
+  font-size: 15px;
+  color: white;
+  letter-spacing: 0.6px;
+  text-align: center;
+  outline: none;
+  border: none;
+  border: 1.5px solid blueviolet;
+  padding: 9px 22px;
+  border-radius: 40px;
+  background-color: rgb(132, 40, 218);
+  opacity: 1;
+}
+.buttons .btn.exit{
+  color: white;
+  background-color: rgba(143, 87, 255, 0.2);
+  border: 1.5px solid white;
+}
+.buttons .btn:hover{
+  opacity: 0.8;
 }
 .nextBtn{
   display: none;
@@ -158,16 +231,10 @@ body{
   border-radius: 8px;
 }
 .question_counter {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 12px 0;
-  margin: 40px 0 30px 0;
   color: white;
   font-size: 18px;
   /* font-family: sans-serif; */
   letter-spacing: 0.6px;
-  border-top: 1px solid rgb(50, 76, 162);
 }
 .question_counter span{
   font-weight: bold;
@@ -215,7 +282,7 @@ label{
   border-radius: 8px;
   border: 1.5px solid white;
   box-sizing: border-box;
-  box-shadow: 0 0 0 0 rgba(137, 137, 255, 0.5);
+  box-shadow: 0 0 0 0 rgba(137, 137, 255, 0.4);
 }
 
 .numbOfQuestion{
@@ -232,14 +299,14 @@ label{
   background-color: blueviolet;
   color: white;
   border: 1.5px solid blueviolet;
-  animation: fade-out 0.8s linear;
+  animation: fade-out 0.7s linear;
 }
 @keyframes fade-out{
   0%{
-  box-shadow: 0 0 0 0 rgba(137, 137, 255, 0.5);
+  box-shadow: 0 0 0 0 rgba(137, 137, 255, 0.4);
   }
   100%{
-  box-shadow: 0 0 0 12px rgba(137, 137, 255, 0);
+  box-shadow: 0 0 0 8px rgba(137, 137, 255, 0);
   }
 }
 .startBtn{
@@ -262,7 +329,7 @@ label{
 }
 
 .quiz_info .info_content{
-   padding: 30px;
+   padding: 30px 30px 10px 30px;
    color: white;
    font-size: 16px;
    font-family: sans-serif;
@@ -271,8 +338,15 @@ label{
   margin: 8px 0;
 }
 
-@media (max-width: 450px){
-  .quiz_box{
+@media (max-width: 460px){
+  .play-game{
+    font-size: 16px;
+    padding: 10px 24px;
+  }
+  .quiz_config,
+  .quiz_info,
+  .quiz_box,
+  .quiz_result{
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -280,4 +354,5 @@ label{
     height: 100vh;
     border-radius: 0;
   }
+  
 }

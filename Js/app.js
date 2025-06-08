@@ -2,6 +2,7 @@
 const quizConfig=document.querySelector('.quiz_config');
 const quizInfo=document.querySelector('.quiz_info');
 const quizBox=document.querySelector('.quiz_box');
+const quizTimer=document.querySelector('.quiz_box .header .timer');
 const quizResult=document.querySelector('.quiz_result');
 const questionText=document.querySelector('.questionBox');
 const answerList=document.querySelector('.answer-list');
@@ -64,6 +65,7 @@ function resetQuiz(){
     userScore=0;
     counterCount=0;
     clearInterval(counter);
+    quizTimer.textContent=`⏳ ${TIMER_LIMIT}s`;
 }
 
 startBtn.addEventListener("click", ()=>{
@@ -90,6 +92,7 @@ continueBtn.addEventListener("click", ()=>{
    RenderQuestion(0);
    QuestionCounter(1);
    StartTimer(TIMER_LIMIT);
+   quizTimer.textContent=`⏳ ${TIMER_LIMIT}s`;
    scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
    scoreBox.style.display='block';
 });
@@ -111,6 +114,7 @@ nextBtn.addEventListener("click", ()=>{
      counterCount=0;
      RenderQuestion(ques_count);
      QuestionCounter(ques_numb);
+     quizTimer.textContent=`⏳ ${TIMER_LIMIT}s`;
      clearInterval(counter);
      StartTimer(timerValue);
   }
@@ -233,9 +237,11 @@ function StartTimer(time){
       console.log(time);
       time--;
       counterCount++;
+      quizTimer.textContent=`⏳ ${time}s`;
     } 
      else{
        clearInterval(counter);
+       quizTimer.textContent=`⏳ Time Over`;
        console.warn("Time over.");
        let answer=categoryQuestions[ques_count].answer;
        HighlightCorrectAnswer(answer);
