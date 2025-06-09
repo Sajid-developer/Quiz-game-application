@@ -47,12 +47,13 @@ ul li{
   transition: 0.3s ease-in-out;
   z-index: 10;
   transform-origin: center;
+  user-select: none;
 }
 .quiz_info{
   width: 580px;
 }
 .quiz_box{
-  width: 550px;
+  width: 600px;
 }
 .quiz_result{
   display: flex;
@@ -98,7 +99,7 @@ ul li{
   letter-spacing: 0.5px;
 }
 .quiz_box .question-content{
-  padding: 10px 40px;
+  padding: 30px 40px;
 }
 .quiz_box .bottom-content{
   display: flex;

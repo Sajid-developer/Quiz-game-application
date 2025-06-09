@@ -20,7 +20,7 @@ const playGame=document.querySelector(".play-game");
 let quizCategory=document.querySelector(".category-btn.active").value;
 let numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
 
-const TIMER_LIMIT=15;
+const TIMER_LIMIT=20;
 let timerValue=TIMER_LIMIT;
 let ques_count=0;
 let ques_numb=1;
@@ -92,7 +92,7 @@ continueBtn.addEventListener("click", ()=>{
    RenderQuestion(0);
    QuestionCounter(1);
    StartTimer(TIMER_LIMIT);
-   quizTimer.textContent=`⏳ ${TIMER_LIMIT}s`;
+   quizTimer.textContent=`⏳ 0:${TIMER_LIMIT}`;
    scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
    scoreBox.style.display='block';
 });
@@ -114,7 +114,7 @@ nextBtn.addEventListener("click", ()=>{
      counterCount=0;
      RenderQuestion(ques_count);
      QuestionCounter(ques_numb);
-     quizTimer.textContent=`⏳ ${TIMER_LIMIT}s`;
+     quizTimer.textContent=`⏳ 0:${TIMER_LIMIT}`;
      clearInterval(counter);
      StartTimer(timerValue);
   }
@@ -237,7 +237,10 @@ function StartTimer(time){
       console.log(time);
       time--;
       counterCount++;
-      quizTimer.textContent=`⏳ ${time}s`;
+      if(time < 10){
+        time="0"+time;
+      }
+      quizTimer.textContent=`⏳ 0:${time}`;
     } 
      else{
        clearInterval(counter);
