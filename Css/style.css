@@ -7,7 +7,14 @@ body{
   overflow-x: hidden;
 }
 button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+}
+button i{
+  margin-left: 8px;
+  font-size: 13px;
 }
 ul li{
   cursor: pointer;
@@ -41,6 +48,9 @@ ul li{
   z-index: 10;
   transform-origin: center;
 }
+.quiz_info{
+  width: 550px;
+}
 .quiz_box{
   width: 550px;
 }
@@ -48,8 +58,10 @@ ul li{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: white;
-  padding: 20px 0;
+  padding: 0;
+  background-color: rgb(3, 6, 26);
 }
 .result_content{
   text-align: center;
@@ -86,7 +98,7 @@ ul li{
   letter-spacing: 0.5px;
 }
 .quiz_box .question-content{
-  padding: 20px 40px;
+  padding: 10px 40px;
 }
 .quiz_box .bottom-content{
   display: flex;
@@ -154,6 +166,9 @@ ul li{
   border: 1.5px solid rgb(228, 22, 22);
 }
 .play-game{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -162,7 +177,7 @@ ul li{
   color: white;
   outline: none;
   border: none;
-  padding: 10px 30px;
+  padding: 10px 40px;
   margin: 0;
   border-radius: 40px;
   background-color: blueviolet;
@@ -180,8 +195,10 @@ ul li{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0 40px;
   margin: 30px 0 40px 0;
+  gap: 12px;
   /* border: 2px solid red; */
 }
 .quiz_info .buttons .btn,
@@ -271,7 +288,7 @@ label{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(143, 87, 255, 0.4);
+  background-color: rgba(143, 87, 255, 0.1);
   font-size: 13px;
   color: white;
   letter-spacing: 0.7px;
@@ -284,6 +301,10 @@ label{
   box-sizing: border-box;
   box-shadow: 0 0 0 0 rgba(137, 137, 255, 0.4);
 }
+.questionCategory .category-btn:hover,
+.numbOfQuestion .number:hover{
+  background-color: rgba(143, 87, 255, 0.2);
+}
 
 .numbOfQuestion{
   margin-top: 20px;
@@ -292,7 +313,6 @@ label{
   width: 50px;
   height: 50px;
   font-size: 17px;
-
 }
 .questionCategory .category-btn.active, 
 .numbOfQuestion .number.active{
@@ -354,5 +374,9 @@ label{
     height: 100vh;
     border-radius: 0;
   }
+  .quiz_info .buttons .btn,
+.quiz_result .buttons .btn{
+  width: 100%;
+}
   
 }
