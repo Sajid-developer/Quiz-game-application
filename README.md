@@ -4,7 +4,7 @@
 
 ## 📸 Screenshot
 
-![Screenshot](Images/party-stickers.gif)
+![Screenshot](Images/quiz-ui.png)
 
 ---
 
