@@ -57,13 +57,20 @@ open index.html
 Contributions, issues, and feature requests are welcome!
 Feel free to fork the repo and open a pull request.
 
+---
+
 ## 📃 License
 This project is licensed under the MIT License.
 
+---
+
 ## 🙋‍♂️ Author
 Sajid Alam
-📧 [Your Email](sajid.developerr@gmail.com)
-🔗 [LinkedIn Profile](https://www.linkedin.com/in/sajid-developer/)
+
+📧 [Email](sajid.developerr@gmail.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/sajid-developer/)
+
+---
 
 ## 🌟 Show Your Support
 If you like this project, please give a star⭐ to the repo to help others discover it!
