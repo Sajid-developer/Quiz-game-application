@@ -55,7 +55,7 @@ open index.html
 
 ## ✨ Contribution
 Contributions, issues, and feature requests are welcome!
-Feel free to fork the repo and open a pull request.
+Feel free to **fork** the repo and open a **pull request**.
 
 ---
 
