@@ -25,10 +25,9 @@ Or run locally by following the steps below ⬇️
 
 ## 📂 Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript *(or React/Angular – update accordingly)*
-- **Backend (optional)**: PHP + MySQL / Node.js + MongoDB
-- **Styling**: Tailwind CSS / Bootstrap / Custom CSS
-- **State Management**: LocalStorage / Redux / Context API
+- **Frontend**: HTML, CSS, JavaScript
+- **Styling**: Custom CSS
+- **State Management**: LocalStorage
 
 ---
 
