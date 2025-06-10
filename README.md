@@ -39,13 +39,13 @@ Or run locally by following the steps below ⬇️
 
 ## 📂 Folder structure
 
-Quiz-game-application/
-    ├── index.html
-    ├── style.css
-    ├── script.js
-    ├── assets/
-    ├── questions.js
-    └── README.md
+quizzy-minds/
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+├── questions.js
+└── README.md
 
 ---
 
