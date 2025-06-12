@@ -244,7 +244,7 @@ function StartTimer(time){
     } 
      else{
        clearInterval(counter);
-       quizTimer.textContent=`⏳ Time Over`;
+       quizTimer.textContent=`⏳ Time Up`;
        console.warn("Time over.");
        let answer=categoryQuestions[ques_count].answer;
        HighlightCorrectAnswer(answer);
