@@ -1,255 +1,297 @@
 
-const quizConfig=document.querySelector('.quiz_config');
-const quizInfo=document.querySelector('.quiz_info');
-const quizBox=document.querySelector('.quiz_box');
-const quizTimer=document.querySelector('.quiz_box .header .timer');
-const quizResult=document.querySelector('.quiz_result');
-const questionText=document.querySelector('.questionBox');
-const answerList=document.querySelector('.answer-list');
-const scoreBox=document.querySelector('.score');
-const question_counter=document.querySelector('.question_counter');
-const startBtn=document.querySelector('.startBtn');
-const nextBtn=document.querySelector('.nextBtn');
-const exitBtns=document.querySelectorAll('.buttons .btn.exit');
-const continueBtn=document.querySelector('.buttons .btn.continue');
-const restartBtn=document.querySelector('.buttons .btn.restart');
-const categoryBtns=document.querySelectorAll('.questionCategory .category-btn');
-const numbQuestion=document.querySelectorAll('.numbOfQuestion .number');
-const playGame=document.querySelector(".play-game");
-  
-let quizCategory=document.querySelector(".category-btn.active").value;
-let numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
+const quizConfig = document.querySelector('.quiz_config');
+const quizInfo = document.querySelector('.quiz_info');
+const quizBox = document.querySelector('.quiz_box');
+const quizTimer = document.querySelector('.quiz_box .header .timer');
+const quizResult = document.querySelector('.quiz_result');
+const questionText = document.querySelector('.questionBox');
+const answerList = document.querySelector('.answer-list');
+const scoreBox = document.querySelector('.score');
+const question_counter = document.querySelector('.question_counter');
+const startBtn = document.querySelector('.startBtn');
+const nextBtn = document.querySelector('.nextBtn');
+const exitBtns = document.querySelectorAll('.buttons .btn.exit');
+const continueBtn = document.querySelector('.buttons .btn.continue');
+const restartBtn = document.querySelector('.buttons .btn.restart');
+const categoryBtns = document.querySelectorAll('.questionCategory .category-btn');
+const numbQuestion = document.querySelectorAll('.numbOfQuestion .number');
+const playGame = document.querySelector(".play-game");
+const backMusic = document.querySelector(".back-music");
+const soundFx = document.querySelector(".sound-fx");
 
-const TIMER_LIMIT=20;
-let timerValue=TIMER_LIMIT;
-let ques_count=0;
-let ques_numb=1;
-let correctAnswerCount=0;
-let WidthValue=0;
-let userScore=0;
-let counter,counterLine;
-let counterCount=0;   
 
-playGame.addEventListener("click", ()=>{
-   quizConfig.classList.add('activeConfig');
-   playGame.classList.add('hide');
+let quizCategory = document.querySelector(".category-btn.active").value;
+let numbOfQuestions = parseInt(document.querySelector(".number.active").textContent);
+
+const TIMER_LIMIT = 20;
+let timerValue = TIMER_LIMIT;
+let ques_count = 0;
+let ques_numb = 1;
+let correctAnswerCount = 0;
+let WidthValue = 0;
+let userScore = 0;
+let counter, counterLine;
+let counterCount = 0;
+
+playGame.addEventListener("click", () => {
+  quizConfig.classList.add('activeConfig');
+  playGame.classList.add('hide');
 });
 
-categoryBtns.forEach(btn =>{
-  btn.addEventListener("click", ()=>{
-     document.querySelector(".category-btn.active").classList.remove("active");
-     btn.classList.add("active");
-     quizCategory=btn.value;
-     console.log(quizCategory);
-   });
+categoryBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelector(".category-btn.active").classList.remove("active");
+    btn.classList.add("active");
+    quizCategory = btn.value;
+    console.log(quizCategory);
+  });
 });
 
-numbQuestion.forEach(numb =>{
-  numb.addEventListener("click", ()=>{
-     document.querySelector(".number.active").classList.remove("active");
-     numb.classList.add("active");
-     numbOfQuestions=parseInt(numb.textContent);
-     console.log(numbOfQuestions);
-   });
+numbQuestion.forEach(numb => {
+  numb.addEventListener("click", () => {
+    document.querySelector(".number.active").classList.remove("active");
+    numb.classList.add("active");
+    numbOfQuestions = parseInt(numb.textContent);
+    console.log(numbOfQuestions);
+  });
 });
 
 console.log(quizCategory);
 console.log(numbOfQuestions);
 
-function resetQuiz(){
-    timerValue=TIMER_LIMIT;
-    ques_count=0;
-    ques_numb=1;
-    correctAnswerCount=0;
-    WidthValue=0;
-    userScore=0;
-    counterCount=0;
-    clearInterval(counter);
-    quizTimer.textContent=`⏳ ${TIMER_LIMIT}s`;
+function resetQuiz() {
+  timerValue = TIMER_LIMIT;
+  ques_count = 0;
+  ques_numb = 1;
+  correctAnswerCount = 0;
+  WidthValue = 0;
+  userScore = 0;
+  counterCount = 0;
+  clearInterval(counter);
+  quizTimer.textContent = `⏳ ${TIMER_LIMIT}s`;
 }
 
-startBtn.addEventListener("click", ()=>{
-   quizConfig.classList.remove('activeConfig');
-   quizInfo.classList.add('activeInfo');
+function PlayAreYouReady() {
+  soundFx.src = "Game sounds/Are You Ready Sound.m4a";
+  soundFx.volume = 0.5;
+  soundFx.play();
+}
+
+function playBackgroundMusic() {
+  backMusic.src = "Game sounds/back music.m4a";
+  backMusic.volume = 0.12;
+  if (!backMusic.loop) {
+    backMusic.loop = true;
+  }
+  backMusic.play();
+}
+
+function PlayCorrectAnswer() {
+  soundFx.src = "Game sounds/Correct answer sound.m4a";
+  soundFx.volume = 0.7;
+  soundFx.play();
+}
+
+function PlayWrongAnswer() {
+  soundFx.src = "Game sounds/Wrong sound effect.m4a";
+  soundFx.volume = 0.7;
+  soundFx.play();
+}
+
+function PlayTimeUp() {
+  soundFx.src = "Game sounds/Time out Buzzer Sound.m4a";
+  soundFx.volume = 0.8;
+  soundFx.play();
+}
+
+startBtn.addEventListener("click", () => {
+  quizConfig.classList.remove('activeConfig');
+  quizInfo.classList.add('activeInfo');
+  PlayAreYouReady();
 });
 
-exitBtns.forEach(exit =>{
-   exit.addEventListener("click", ()=>{
-   quizInfo.classList.remove('activeInfo');
-   quizResult.classList.remove('activeResult');
-   playGame.classList.remove('hide');
+exitBtns.forEach(exit => {
+  exit.addEventListener("click", () => {
+    quizInfo.classList.remove('activeInfo');
+    quizResult.classList.remove('activeResult');
+    playGame.classList.remove('hide');
   });
 });
 
-continueBtn.addEventListener("click", ()=>{
+continueBtn.addEventListener("click", () => {
+  playBackgroundMusic();
   quizInfo.classList.remove("activeInfo");
   quizBox.classList.add("activeQuiz");
 
-  quizCategory=document.querySelector(".category-btn.active").value;
-   numbOfQuestions=parseInt(document.querySelector(".number.active").textContent);
-   resetQuiz();
-   correctAnswerCount=0;
-   RenderQuestion(0);
-   QuestionCounter(1);
-   StartTimer(TIMER_LIMIT);
-   quizTimer.textContent=`⏳ 0:${TIMER_LIMIT}`;
-   scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
-   scoreBox.style.display='block';
+  quizCategory = document.querySelector(".category-btn.active").value;
+  numbOfQuestions = parseInt(document.querySelector(".number.active").textContent);
+  resetQuiz();
+  correctAnswerCount = 0;
+  RenderQuestion(0);
+  QuestionCounter(1);
+  StartTimer(TIMER_LIMIT);
+  quizTimer.textContent = `⏳ 0:${TIMER_LIMIT}`;
+  scoreBox.innerHTML = `Score: <strong>${userScore}</strong>`;
+  scoreBox.style.display = 'block';
 });
 
-restartBtn.addEventListener("click", ()=>{
+restartBtn.addEventListener("click", () => {
   quizResult.classList.remove("activeResult");
   quizConfig.classList.add("activeConfig");
   resetQuiz();
 });
 
 
-const categoryQuestions=QuizData.find(quiz => 
+const categoryQuestions = QuizData.find(quiz =>
   quiz.category.toLowerCase() === quizCategory.toLowerCase()).questions;
 
-nextBtn.addEventListener("click", ()=>{
-  if(ques_count < numbOfQuestions - 1){
-     ques_count++;
-     ques_numb++;
-     counterCount=0;
-     RenderQuestion(ques_count);
-     QuestionCounter(ques_numb);
-     quizTimer.textContent=`⏳ 0:${TIMER_LIMIT}`;
-     clearInterval(counter);
-     StartTimer(timerValue);
+nextBtn.addEventListener("click", () => {
+  if (ques_count < numbOfQuestions - 1) {
+    ques_count++;
+    ques_numb++;
+    counterCount = 0;
+    RenderQuestion(ques_count);
+    QuestionCounter(ques_numb);
+    quizTimer.textContent = `⏳ 0:${TIMER_LIMIT}`;
+    clearInterval(counter);
+    StartTimer(timerValue);
   }
-  else{
+  else {
+    backMusic.pause();
     console.log("Quiz completed");
     console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} question correctly.`);
     console.log(`Final Score is: ${userScore}`);
-    scoreBox.style.display='none';
+    scoreBox.style.display = 'none';
     quizBox.classList.remove('activeQuiz');
     quizResult.classList.add('activeResult');
   }
 });
 
 
-let currentQuestion='';
+let currentQuestion = '';
 
-function RenderQuestion(index){
-   answerList.classList.remove('disable');
-   currentQuestion=categoryQuestions[index];
-   let quest=`<span style="font-size:42px;">${ques_numb}.</span> ${currentQuestion.question}`;
-   let optionList='';
+function RenderQuestion(index) {
+  answerList.classList.remove('disable');
+  currentQuestion = categoryQuestions[index];
+  let quest = `<span style="font-size:42px;">${ques_numb}.</span> ${currentQuestion.question}`;
+  let optionList = '';
 
-   let shuffledOptions=currentQuestion.options.sort((a,b) => 0.5 - Math.random());
-  
-   shuffledOptions.forEach(option => {
-      optionList+=`<li>${option}</li>`; 
-    });
+  let shuffledOptions = currentQuestion.options.sort((a, b) => 0.5 - Math.random());
 
-    questionText.innerHTML=quest;
-    answerList.innerHTML=optionList;
+  shuffledOptions.forEach(option => {
+    optionList += `<li>${option}</li>`;
+  });
 
-    const answerOptions=answerList.querySelectorAll('li');
+  questionText.innerHTML = quest;
+  answerList.innerHTML = optionList;
 
-    answerOptions.forEach(option =>{
-      option.setAttribute("onclick","AnswerSelected(this)");
-    });
+  const answerOptions = answerList.querySelectorAll('li');
 
-  nextBtn.style.display='none';
+  answerOptions.forEach(option => {
+    option.setAttribute("onclick", "AnswerSelected(this)");
+  });
+
+  nextBtn.style.display = 'none';
 
 }
- //indicate quiz question number
-  function QuestionCounter(quesNumb){
-      let counterTag=`<span>${quesNumb}</span> of <span>${numbOfQuestions}</span> Questions`;
-      question_counter.innerHTML=counterTag;
+//indicate quiz question number
+function QuestionCounter(quesNumb) {
+  let counterTag = `<span>${quesNumb}</span> of <span>${numbOfQuestions}</span> Questions`;
+  question_counter.innerHTML = counterTag;
 }
 
-  let tickIcon='<span><i class="fa-regular fa-circle-check"></i><span>';
-  let crossIcon='<span><i class="fa-regular fa-circle-xmark"></i><span>';
+let tickIcon = '<span><i class="fa-regular fa-circle-check"></i><span>';
+let crossIcon = '<span><i class="fa-regular fa-circle-xmark"></i><span>';
 
-function AnswerSelected(answer){
-    clearInterval(counter);
-    console.log(counterCount);
-    let userAnswer=answer.textContent;
-    let correctAnswer=categoryQuestions[ques_count].answer;
+function AnswerSelected(answer) {
+  clearInterval(counter);
+  console.log(counterCount);
+  let userAnswer = answer.textContent;
+  let correctAnswer = categoryQuestions[ques_count].answer;
 
   // check if user answer is correct or incorrect
-  if(userAnswer === correctAnswer){
+  if (userAnswer === correctAnswer) {
+    PlayCorrectAnswer();
     console.log("Answer is correct.");
     answer.classList.add('correct');
     correctAnswerCount++;
-    let bonusScore=0;
-    if(counterCount <= 5){
-      bonusScore=50;
+    let bonusScore = 0;
+    if (counterCount <= 5) {
+      bonusScore = 50;
     }
     HandleUserScore(quizCategory, bonusScore);
     answer.insertAdjacentHTML("beforeend", tickIcon);
-   }
-  else{
+  }
+  else {
+    PlayWrongAnswer();
     console.log("Answer is Incorrect.");
     answer.classList.add('incorrect');
     answer.insertAdjacentHTML("beforeend", crossIcon);
   }
 
-    // all options will be disabled, once user selects
-    answerList.classList.add('disable');
+  // all options will be disabled, once user selects
+  answerList.classList.add('disable');
 
-    userAnswer!= correctAnswer ? HighlightCorrectAnswer(correctAnswer) : '';
-    nextBtn.style.display='block';
+  userAnswer != correctAnswer ? HighlightCorrectAnswer(correctAnswer) : '';
+  nextBtn.style.display = 'block';
 }
 
 // highlight correct answer automatically when user selects wrong answer
-function HighlightCorrectAnswer(correctAnswer){
-    const allOptions=answerList.querySelectorAll('li');
-    allOptions.forEach(option =>{
-       if(option.textContent === correctAnswer){
-           option.classList.add('correct');
-           option.insertAdjacentHTML("beforeend", tickIcon);   
-       }
-    });
+function HighlightCorrectAnswer(correctAnswer) {
+  const allOptions = answerList.querySelectorAll('li');
+  allOptions.forEach(option => {
+    if (option.textContent === correctAnswer) {
+      option.classList.add('correct');
+      option.insertAdjacentHTML("beforeend", tickIcon);
+    }
+  });
+}
+
+// handle user score on the basis of category of question
+function HandleUserScore(category, bonus) {
+  if (category == "Entertainment") {
+    userScore += 100;
+    userScore += bonus;
+  }
+  else if (category == "Programming") {
+    userScore += 150;
+    userScore += bonus;
+  }
+  else if (category == "Geography") {
+    userScore += 200;
+    userScore += bonus;
+  }
+  else {
+    userScore += 250;
+    userScore += bonus;
   }
 
-  // handle user score on the basis of category of question
-function HandleUserScore(category, bonus){
-   if(category == "Entertainment"){
-      userScore+=100;
-      userScore+=bonus;
-   }
-   else if(category == "Programming"){
-      userScore+=150;
-      userScore+=bonus;
-   }
-   else if(category == "Geography"){
-      userScore+=200;
-      userScore+=bonus;
-   }
-   else{
-      userScore+=250;
-      userScore+=bonus;
-   }
+  scoreBox.innerHTML = `Score: <strong>${userScore}</strong>`;
 
-    scoreBox.innerHTML= `Score: <strong>${userScore}</strong>`;
-    
 }
 
 // quiz timer limit
-function StartTimer(time){
-  counter=setInterval(timer, 1000);
-  function timer(){
-    if(time > 0){
+function StartTimer(time) {
+  counter = setInterval(timer, 1000);
+  function timer() {
+    if (time > 0) {
       console.log(time);
       time--;
       counterCount++;
-      if(time < 10){
-        time="0"+time;
+      if (time < 10) {
+        time = "0" + time;
       }
-      quizTimer.textContent=`⏳ 0:${time}`;
-    } 
-     else{
-       clearInterval(counter);
-       quizTimer.textContent=`⏳ Time up`;
-       console.warn("Time over.");
-       let answer=categoryQuestions[ques_count].answer;
-       HighlightCorrectAnswer(answer);
-       answerList.classList.add('disable');
-       nextBtn.style.display='block';
-     }
+      quizTimer.textContent = `⏳ 0:${time}`;
+    }
+    else {
+      PlayTimeUp();
+      clearInterval(counter);
+      quizTimer.textContent = `⏳ Time up`;
+      console.warn("Time over.");
+      let answer = categoryQuestions[ques_count].answer;
+      HighlightCorrectAnswer(answer);
+      answerList.classList.add('disable');
+      nextBtn.style.display = 'block';
+    }
   }
 }
