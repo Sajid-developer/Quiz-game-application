@@ -122,7 +122,6 @@ continueBtn.addEventListener("click", () => {
   playBackgroundMusic();
   quizInfo.classList.remove("activeInfo");
   quizBox.classList.add("activeQuiz");
-
   quizCategory = document.querySelector(".category-btn.active").value;
   numbOfQuestions = parseInt(document.querySelector(".number.active").textContent);
   resetQuiz();
@@ -132,7 +131,6 @@ continueBtn.addEventListener("click", () => {
   StartTimer(TIMER_LIMIT);
   quizTimer.textContent = `⏳ 0:${TIMER_LIMIT}`;
   scoreBox.innerHTML = `Score: <strong>${userScore}</strong>`;
-  scoreBox.style.display = 'block';
 });
 
 restartBtn.addEventListener("click", () => {
@@ -161,7 +159,6 @@ nextBtn.addEventListener("click", () => {
     console.log("Quiz completed");
     console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} question correctly.`);
     console.log(`Final Score is: ${userScore}`);
-    scoreBox.style.display = 'none';
     quizBox.classList.remove('activeQuiz');
     quizResult.classList.add('activeResult');
   }
