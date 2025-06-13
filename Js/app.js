@@ -21,7 +21,7 @@ const backMusic = document.querySelector(".back-music");
 const soundFx = document.querySelector(".sound-fx");
 
 
-let quizCategory = document.querySelector(".category-btn.active").value;
+let quizCategory = document.querySelector(".category-btn.active").textContent;
 let numbOfQuestions = parseInt(document.querySelector(".number.active").textContent);
 
 const TIMER_LIMIT = 20;
@@ -43,7 +43,7 @@ categoryBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelector(".category-btn.active").classList.remove("active");
     btn.classList.add("active");
-    quizCategory = btn.value;
+    quizCategory=btn.textContent;
     console.log(quizCategory);
   });
 });
@@ -52,7 +52,7 @@ numbQuestion.forEach(numb => {
   numb.addEventListener("click", () => {
     document.querySelector(".number.active").classList.remove("active");
     numb.classList.add("active");
-    numbOfQuestions = parseInt(numb.textContent);
+    numbOfQuestions=parseInt(numb.textContent);
     console.log(numbOfQuestions);
   });
 });
@@ -105,10 +105,13 @@ function PlayTimeUp() {
   soundFx.play();
 }
 
+let categoryQuestions, shuffledQuestions;
+
 startBtn.addEventListener("click", () => {
   quizConfig.classList.remove('activeConfig');
   quizInfo.classList.add('activeInfo');
   PlayAreYouReady();
+
 });
 
 exitBtns.forEach(exit => {
@@ -116,8 +119,11 @@ exitBtns.forEach(exit => {
     quizInfo.classList.remove('activeInfo');
     quizResult.classList.remove('activeResult');
     playGame.classList.remove('hide');
+    soundFx.pause();
+    window.location.reload();
   });
 });
+
 
 continueBtn.addEventListener("click", () => {
   playBackgroundMusic();
@@ -125,6 +131,10 @@ continueBtn.addEventListener("click", () => {
   quizBox.classList.add("activeQuiz");
   quizCategory = document.querySelector(".category-btn.active").value;
   numbOfQuestions = parseInt(document.querySelector(".number.active").textContent);
+  categoryQuestions = QuizData.find(quiz => quiz.category.toLowerCase() === quizCategory.toLowerCase()).questions;
+  shuffledQuestions = categoryQuestions.sort((a, b) => 0.5 - Math.random());
+
+
   resetQuiz();
   correctAnswerCount = 0;
   RenderQuestion(0);
@@ -139,10 +149,6 @@ restartBtn.addEventListener("click", () => {
   quizConfig.classList.add("activeConfig");
   resetQuiz();
 });
-
-
-const categoryQuestions = QuizData.find(quiz =>
-  quiz.category.toLowerCase() === quizCategory.toLowerCase()).questions;
 
 nextBtn.addEventListener("click", () => {
   if (ques_count < numbOfQuestions - 1) {
@@ -172,7 +178,7 @@ let currentQuestion = '';
 
 function RenderQuestion(index) {
   answerList.classList.remove('disable');
-  currentQuestion = categoryQuestions[index];
+  currentQuestion = shuffledQuestions[index];
   let quest = `<span style="font-size:42px;">${ques_numb}.</span> ${currentQuestion.question}`;
   let optionList = '';
 
