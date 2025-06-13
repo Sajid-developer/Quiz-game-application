@@ -238,7 +238,6 @@ ul li{
   cursor: pointer;
 }
 .quiz_box .header .score{
-  display: none;
   padding: 8px 20px;
   background-color: rgba(228, 228, 255, 0.2);
   font-size: 18px;
