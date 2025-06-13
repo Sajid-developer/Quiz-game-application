@@ -4,6 +4,7 @@ const quizInfo = document.querySelector('.quiz_info');
 const quizBox = document.querySelector('.quiz_box');
 const quizTimer = document.querySelector('.quiz_box .header .timer');
 const quizResult = document.querySelector('.quiz_result');
+const scoreStatus = document.querySelector('.quiz_result .result_content .score-status');
 const questionText = document.querySelector('.questionBox');
 const answerList = document.querySelector('.answer-list');
 const scoreBox = document.querySelector('.quiz_box .header .score');
@@ -157,10 +158,12 @@ nextBtn.addEventListener("click", () => {
   else {
     backMusic.pause();
     console.log("Quiz completed");
-    console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} question correctly.`);
+    console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} questions correctly.`);
     console.log(`Final Score is: ${userScore}`);
     quizBox.classList.remove('activeQuiz');
     quizResult.classList.add('activeResult');
+    scoreStatus.innerHTML=`You answered  <strong>${correctAnswerCount}</strong> out of  <strong>${numbOfQuestions}</strong> questions correctly 👍🏼
+    <h3 style="margin-top:20px;">Final score: <span style="padding:4px 6px;border-radius:6px;background-color:rgba(178, 188, 255, 0.4);">${userScore}</span></h3>`;
   }
 });
 
@@ -213,7 +216,7 @@ function AnswerSelected(answer) {
     answer.classList.add('correct');
     correctAnswerCount++;
     let bonusScore = 0;
-    if (counterCount <= 5) {
+    if (counterCount < 6) {
       bonusScore = 50;
     }
     HandleUserScore(quizCategory, bonusScore);
