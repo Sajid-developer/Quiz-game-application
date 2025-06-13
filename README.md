@@ -46,7 +46,7 @@ cd Quiz-game-application
 
 ```
 
-## Open in your browser (if it's a static project)
+## Open in your browser
 open index.html
 
 ---
