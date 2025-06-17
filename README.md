@@ -35,7 +35,7 @@ Or run locally by following the steps below ⬇️
 
 ---
 
-## 🔧 Installation & Setup
+### 🔧 Installation & Setup
 
 ```bash
 
