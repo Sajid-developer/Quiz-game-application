@@ -35,7 +35,7 @@ Or run locally by following the steps below ⬇️
 
 ---
 
-### 🔧 Installation & Setup
+## 🔧 Installation & Setup
 
 ```bash
 
@@ -46,7 +46,7 @@ cd Quiz-game-application
 
 ```
 
-## Open in your browser
+### Open in your browser
 open >> index.html
 
 ---
