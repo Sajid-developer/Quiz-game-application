@@ -47,7 +47,7 @@ cd Quiz-game-application
 ```
 
 ### Open in your browser
-open ->> index.html
+open -> index.html
 
 ---
 
