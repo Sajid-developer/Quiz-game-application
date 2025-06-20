@@ -4,7 +4,7 @@
 
 ## 📸 Screenshot
 
-![Screenshot](Images/quiz.png)
+![Screenshot](Images/quiz-ui.png)
 
 ---
 
