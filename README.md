@@ -13,6 +13,7 @@
 - 🔢 Multiple choice questions with 4 options
 - 🎯 Score tracking and instant feedback
 - 🗂️ Category-based questions (e.g., Science, Movies, Geography)
+- Bonus score for fast answers 
 - 🕹️ Interactive UI with animations
 - 💾 Progress saving (via localStorage or database)
 - ✅ Responsive design for mobile & desktop
