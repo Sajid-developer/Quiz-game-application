@@ -15,7 +15,7 @@
 - 🗂️ Category-based questions (e.g., Science, Movies, Geography)
 - 🏆 Bonus score for fast answers 
 - 🕹️ Interactive UI with animations
-- 💾 Progress saving (via localStorage or database)
+- 💾 Progress saving (via localStorage)
 - ✅ Responsive design for mobile & desktop
 
 ---
