@@ -16,7 +16,7 @@
 - 🏆 Bonus score for fast answers 
 - 🕹️ Interactive UI with animations
 - 💾 Progress saving (via localStorage)
-- 🎨 Responsive design for mobile & desktop
+- ✅ Responsive design for mobile & desktop
 
 ---
 
