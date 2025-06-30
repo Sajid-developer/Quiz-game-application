@@ -1,4 +1,4 @@
-# 🧠 Quizzy Minds - A Fun & Interactive Quiz App
+# 🧠 Quiz Minds - A Fun & Interactive Quiz App
 
 🎯 Challenge your brain, beat the clock, and rise to the top — the ultimate quiz battle begins now!
 
