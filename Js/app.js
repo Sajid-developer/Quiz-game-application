@@ -163,6 +163,7 @@ nextBtn.addEventListener("click", () => {
   }
   else {
     backMusic.pause();
+    backMusic.currentTime = 0;
     console.log("Quiz completed");
     console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} questions correctly.`);
     console.log(`Final Score is: ${userScore}`);
