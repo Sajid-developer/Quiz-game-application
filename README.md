@@ -18,7 +18,7 @@
 - 💾 Progress saving (via localStorage)
 - ✅ Responsive design for mobile & desktop
 
----
+
 
 ## 🖥️ Demo
 
