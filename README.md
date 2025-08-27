@@ -20,7 +20,7 @@
 
 ---
 
-## 🖥️ Demo
+## 🖥️ Live Demo
 
 🚧 Live demo coming soon...
 
