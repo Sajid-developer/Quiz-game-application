@@ -44,7 +44,7 @@ categoryBtns.forEach(btn => {
     document.querySelector(".category-btn.active").classList.remove("active");
     btn.classList.add("active");
     quizCategory=btn.textContent;
-    console.log(quizCategory);
+    console.log(`Your chosen category: ${quizCategory}`);
   });
 });
 
@@ -53,12 +53,12 @@ numbQuestion.forEach(numb => {
     document.querySelector(".number.active").classList.remove("active");
     numb.classList.add("active");
     numbOfQuestions=parseInt(numb.textContent);
-    console.log(numbOfQuestions);
+    console.log(`No. Of Questions to paly: ${numbOfQuestions}`);
   });
 });
 
-console.log(quizCategory);
-console.log(numbOfQuestions);
+// console.log(quizCategory);
+// console.log(numbOfQuestions);
 
 function resetQuiz() {
   timerValue = TIMER_LIMIT;
@@ -164,6 +164,7 @@ nextBtn.addEventListener("click", () => {
   else {
     backMusic.pause();
     backMusic.currentTime = 0;
+    console.log("\n");
     console.log("Quiz completed");
     console.log(`You answered ${correctAnswerCount} out of ${numbOfQuestions} questions correctly.`);
     console.log(`Final Score is: ${userScore}`);
@@ -212,9 +213,10 @@ let crossIcon = '<span><i class="fa-regular fa-circle-xmark"></i><span>';
 
 function AnswerSelected(answer) {
   clearInterval(counter);
-  console.log(counterCount);
+  console.log("\n");
+
   let userAnswer = answer.textContent;
-  let correctAnswer = categoryQuestions[ques_count].answer;
+  let correctAnswer = currentQuestion.answer;
 
   // check if user answer is correct or incorrect
   if (userAnswer === correctAnswer) {
@@ -225,6 +227,8 @@ function AnswerSelected(answer) {
     let bonusScore = 0;
     if (counterCount < 6) {
       bonusScore = 50;
+      console.log(`Really Nice 🌟, You have answered in ${counterCount} seconds`);
+      console.log(`Yeyyyy... You have got ${bonusScore}+ bonus points 🪙`);
     }
     HandleUserScore(quizCategory, bonusScore);
     answer.insertAdjacentHTML("beforeend", tickIcon);
@@ -239,7 +243,9 @@ function AnswerSelected(answer) {
   // all options will be disabled, once user selects
   answerList.classList.add('disable');
 
+  // when user selects incorrect answer, it will highlight the correct answer
   userAnswer != correctAnswer ? HighlightCorrectAnswer(correctAnswer) : '';
+
   nextBtn.style.display = 'block';
 }
 
@@ -282,7 +288,7 @@ function StartTimer(time) {
   counter = setInterval(timer, 1000);
   function timer() {
     if (time > 0) {
-      console.log(time);
+      // console.log(time);
       time--;
       counterCount++;
       if (time < 10) {
@@ -295,7 +301,7 @@ function StartTimer(time) {
       clearInterval(counter);
       quizTimer.textContent = `⏳ Time up`;
       console.warn("Time over.");
-      let answer = categoryQuestions[ques_count].answer;
+      let answer = currentQuestion.answer;
       HighlightCorrectAnswer(answer);
       answerList.classList.add('disable');
       nextBtn.style.display = 'block';
