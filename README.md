@@ -1,6 +1,6 @@
 # 🧠 Quizzy Minds - A Fun & Interactive Quiz Game Application 
 
-🎯 Challenge your brain, beat the clock, and rise to the top — the ultimate quiz battle begins now!
+🎯 Challenge your brain, beat the clock, and rise to the top — the ultimate quiz battle begins now
 
 ## 📸 Screenshot
 
