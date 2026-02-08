@@ -22,7 +22,7 @@
 
 ## 🖥️ Live Demo
 
-✨ [Play Game](https://quizzy-game.vercel.app/)
+✨ [Play Quiz Game](https://quizzy-game.vercel.app/)
 
 Or run locally by following the steps below ⬇️
 
