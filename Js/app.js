@@ -16,7 +16,7 @@ const continueBtn = document.querySelector('.buttons .btn.continue');
 const restartBtn = document.querySelector('.buttons .btn.restart');
 const categoryBtns = document.querySelectorAll('.questionCategory .category-btn');
 const numbQuestion = document.querySelectorAll('.numbOfQuestion .number');
-const playGame = document.querySelector(".play-game");
+const playGame SFX= document.querySelector(".play-game SFX);
 const backMusic = document.querySelector(".back-music");
 const soundFx = document.querySelector(".sound-fx");
 
@@ -34,9 +34,9 @@ let userScore = 0;
 let counter, counterLine;
 let counterCount = 0;
 
-playGame.addEventListener("click", () => {
+playGame SFXaddEventListener("click", () => {
   quizConfig.classList.add('activeConfig');
-  playGame.classList.add('hide');
+  playGame SFXclassList.add('hide');
 });
 
 categoryBtns.forEach(btn => {
@@ -73,13 +73,13 @@ function resetQuiz() {
 }
 
 function PlayAreYouReady() {
-  soundFx.src = "Game sounds/Are You Ready Sound.m4a";
+  soundFx.src = "Game SFX/Are You Ready Sound.m4a";
   soundFx.volume = 0.5;
   soundFx.play();
 }
 
 function playBackgroundMusic() {
-  backMusic.src = "Game sounds/back music.m4a";
+  backMusic.src = "Game SFX/back music.m4a";
   backMusic.volume = 0.12;
   if (!backMusic.loop) {
     backMusic.loop = true;
@@ -88,19 +88,19 @@ function playBackgroundMusic() {
 }
 
 function PlayCorrectAnswer() {
-  soundFx.src = "Game sounds/Correct answer sound.m4a";
+  soundFx.src = "Game SFX/Correct answer sound.m4a";
   soundFx.volume = 0.7;
   soundFx.play();
 }
 
 function PlayWrongAnswer() {
-  soundFx.src = "Game sounds/Wrong sound effect.m4a";
+  soundFx.src = "Game SFX/Wrong sound effect.m4a";
   soundFx.volume = 0.7;
   soundFx.play();
 }
 
 function PlayTimeUp() {
-  soundFx.src = "Game sounds/Time out Buzzer Sound.m4a";
+  soundFx.src = "Game SFX/Time out Buzzer Sound.m4a";
   soundFx.volume = 0.8;
   soundFx.play();
 }
@@ -118,7 +118,7 @@ exitBtns.forEach(exit => {
   exit.addEventListener("click", () => {
     quizInfo.classList.remove('activeInfo');
     quizResult.classList.remove('activeResult');
-    playGame.classList.remove('hide');
+    playGame SFXclassList.remove('hide');
     soundFx.pause();
     window.location.reload();
   });
