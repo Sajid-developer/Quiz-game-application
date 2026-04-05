@@ -16,7 +16,7 @@ const continueBtn = document.querySelector('.buttons .btn.continue');
 const restartBtn = document.querySelector('.buttons .btn.restart');
 const categoryBtns = document.querySelectorAll('.questionCategory .category-btn');
 const numbQuestion = document.querySelectorAll('.numbOfQuestion .number');
-const playGame SFX= document.querySelector(".play-game SFX);
+const playGame = document.querySelector(".play-game");
 const backMusic = document.querySelector(".back-music");
 const soundFx = document.querySelector(".sound-fx");
 
@@ -34,9 +34,9 @@ let userScore = 0;
 let counter, counterLine;
 let counterCount = 0;
 
-playGame SFXaddEventListener("click", () => {
+playGame.addEventListener("click", () => {
   quizConfig.classList.add('activeConfig');
-  playGame SFXclassList.add('hide');
+  playGame.classList.add('hide');
 });
 
 categoryBtns.forEach(btn => {
@@ -118,7 +118,7 @@ exitBtns.forEach(exit => {
   exit.addEventListener("click", () => {
     quizInfo.classList.remove('activeInfo');
     quizResult.classList.remove('activeResult');
-    playGame SFXclassList.remove('hide');
+    playGame.classList.remove('hide');
     soundFx.pause();
     window.location.reload();
   });
